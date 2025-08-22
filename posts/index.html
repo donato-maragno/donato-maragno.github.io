@@ -105,6 +105,9 @@
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
 
 
 
@@ -174,18 +177,20 @@
     
       <article class="post on-list">
         <h2 class="post-title">
-          <a href="/posts/spare-parts-inventory-management/">[Application] Spare Parts Inventory Management</a>
+          <a href="/posts/spare-parts-inventory-management/">[Application] Spare Parts Inventory Management: A Deterministic Approach</a>
         </h2>
         <div class="post-meta"><time class="post-date">2025-08-21</time></div>
 
         
           <span class="post-tags">
             
+            #<a href="/tags/application/">application</a>&nbsp;
+            
             #<a href="/tags/optimization/">optimization</a>&nbsp;
             
             #<a href="/tags/inventory/">inventory</a>&nbsp;
             
-            #<a href="/tags/blog/">blog</a>&nbsp;
+            #<a href="/tags/spare-parts/">spare parts</a>&nbsp;
             
           </span>
         
@@ -195,7 +200,7 @@
 
         <div class="post-content">
           
-            <p>![[production_plant.jpg]]</p>
+            <p><img src="/images/production_plant.jpg" alt="production_plant.jpg"></p>
 <p>Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: <strong>ensure that the right spare parts are available when needed, while keeping inventory costs under control</strong>. Achieving this balance requires making informed decisions about:</p>
 <ul>
 <li>How much stock to hold</li>
@@ -204,9 +209,7 @@
 </ul>
 <hr>
 <h3 id="inventory-policies">Inventory policies</h3>
-<p>%% A powerful approach to tackle this challenge combines <strong>mathematical optimization</strong> with <strong>AI-driven demand forecasting</strong>. By analyzing historical data and using predictive models, organizations can estimate future demand for each spare part at each location.<br>
-These forecasts, however, are inherently <strong>uncertain</strong>, especially for low-volume or erratic parts, so the planning system must account for variability. %%
-%% One widely used method to address uncertainty is <strong>Sample Average Approximation (SAA)</strong>. In practice, SAA works by:</p>
+<p>A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:</p>
           
         </div>
 
