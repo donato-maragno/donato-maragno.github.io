@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   
-    <title>Spare Parts Inventory Management :: Donato Maragno</title>
+    <title>[Application] Spare Parts Inventory Management :: Donato Maragno</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="this is the first post for spare parts inventory management
-test2
+<meta name="description" content="![[production_plant.jpg]]
+Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: ensure that the right spare parts are available when needed, while keeping inventory costs under control. Achieving this balance requires making informed decisions about:
+How much stock to hold When to reorder How to allocate limited budgets across multiple sites and parts Inventory policies %% A powerful approach to tackle this challenge combines mathematical optimization with AI-driven demand forecasting. By analyzing historical data and using predictive models, organizations can estimate future demand for each spare part at each location.
+These forecasts, however, are inherently uncertain, especially for low-volume or erratic parts, so the planning system must account for variability. %% %% One widely used method to address uncertainty is Sample Average Approximation (SAA). In practice, SAA works by:
 " />
 <meta name="keywords" content="" />
 
 <title>
   
-    Spare Parts Inventory Management | Terminal
+    [Application] Spare Parts Inventory Management | Terminal
   
 </title>
 
@@ -86,9 +88,11 @@ test2
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Spare Parts Inventory Management">
-<meta property="og:description" content="this is the first post for spare parts inventory management
-test2
+<meta property="og:title" content="[Application] Spare Parts Inventory Management">
+<meta property="og:description" content="![[production_plant.jpg]]
+Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: ensure that the right spare parts are available when needed, while keeping inventory costs under control. Achieving this balance requires making informed decisions about:
+How much stock to hold When to reorder How to allocate limited budgets across multiple sites and parts Inventory policies %% A powerful approach to tackle this challenge combines mathematical optimization with AI-driven demand forecasting. By analyzing historical data and using predictive models, organizations can estimate future demand for each spare part at each location.
+These forecasts, however, are inherently uncertain, especially for low-volume or erratic parts, so the planning system must account for variability. %% %% One widely used method to address uncertainty is Sample Average Approximation (SAA). In practice, SAA works by:
 " />
 <meta property="og:url" content="/posts/spare-parts-inventory-management/" />
 <meta property="og:site_name" content="Terminal" />
@@ -175,7 +179,7 @@ test2
     
 <article class="post">
   <h1 class="post-title">
-    <a href="/posts/spare-parts-inventory-management/">Spare Parts Inventory Management</a>
+    <a href="/posts/spare-parts-inventory-management/">[Application] Spare Parts Inventory Management</a>
   </h1>
   <div class="post-meta"><time class="post-date">2025-08-21</time></div>
 
@@ -196,9 +200,92 @@ test2
   
 
   <div class="post-content"><div>
-        <p>this is the first post for spare parts inventory management</p>
-<p><img src="/images/production_plant.jpg" alt="production_plant.jpg"></p>
-<p>test2</p>
+        <p>![[production_plant.jpg]]</p>
+<p>Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: <strong>ensure that the right spare parts are available when needed, while keeping inventory costs under control</strong>. Achieving this balance requires making informed decisions about:</p>
+<ul>
+<li>How much stock to hold</li>
+<li>When to reorder</li>
+<li>How to allocate limited budgets across multiple sites and parts</li>
+</ul>
+<hr>
+<h3 id="inventory-policies">Inventory policies<a href="#inventory-policies" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>%% A powerful approach to tackle this challenge combines <strong>mathematical optimization</strong> with <strong>AI-driven demand forecasting</strong>. By analyzing historical data and using predictive models, organizations can estimate future demand for each spare part at each location.<br>
+These forecasts, however, are inherently <strong>uncertain</strong>, especially for low-volume or erratic parts, so the planning system must account for variability. %%
+%% One widely used method to address uncertainty is <strong>Sample Average Approximation (SAA)</strong>. In practice, SAA works by:</p>
+<ol>
+<li>Generating multiple possible demand scenarios for each spare part over the planning horizon.</li>
+<li>Computing key metrics for each scenario, such as inventory levels, reorder quantities, and costs.</li>
+<li>Averaging results across all scenarios to identify reordering policies that are likely to perform well under real-world uncertainty.
+The advantage of using SAA is that it evaluates policies not just on a single forecast, but across a spectrum of possible futures. %%</li>
+</ol>
+<p>A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:</p>
+<h5 id="1-s-q--reorder-point--fixed-order-quantity-policy">1. (s, Q) — Reorder Point / Fixed Order Quantity Policy<a href="#1-s-q--reorder-point--fixed-order-quantity-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>When stock drops to a <strong>reorder point (s)</strong>, place an order of a <strong>fixed quantity (Q)</strong>.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items with stable demand or critical items where stockouts are costly.</li>
+<li><strong>Implication:</strong> The order size never changes.</li>
+<li><strong>Pros:</strong> Simple to calculate; ensures a buffer against stockouts.</li>
+<li><strong>Cons:</strong> Requires continuous inventory monitoring.</li>
+<li><strong>Example:</strong>
+<ul>
+<li>s = 21 units, Q = 50 units</li>
+<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
+<li>Current inventory drops to 10 → order 50 units → new inventory = 60</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-s-s-policy">2. (s, S) Policy<a href="#2-s-s-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>When inventory falls to <strong>s</strong>, order enough to raise stock to <strong>S</strong>.</li>
+<li>Order quantity varies depending on current inventory level.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items with variable demand.</li>
+<li><strong>Implication:</strong> The order quantity <strong>varies depending on current stock</strong>.</li>
+<li><strong>Pros:</strong> Flexible; reduces risk of overstocking.</li>
+<li><strong>Cons:</strong> More complex than fixed-order policies and requires continuous inventory monitoring.</li>
+<li><strong>Example:</strong>
+<ul>
+<li>s = 21 units, S = 70 units</li>
+<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
+<li>Current inventory drops to 10 → order 60 units → new inventory = 70</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-periodic-review-p-q-policy">3. Periodic Review (P, Q) Policy<a href="#3-periodic-review-p-q-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>Inventory is checked at <strong>fixed intervals</strong> (e.g., weekly, monthly).</li>
+<li>If inventory is below a target, place an order of a <strong>fixed quantity (Q)</strong>.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items where continuous monitoring is costly or less critical.</li>
+<li><strong>Pros:</strong> Simplifies monitoring and ordering schedules.</li>
+<li><strong>Cons:</strong> Requires larger safety stock to cover intervals between reviews.</li>
+<li><strong>Example:</strong><br>
+- Review period P = 1 week, Q = 50, safety stock = 40.
+- Inventory on review day = 30 → order 50 → new inventory = 80.<br>
+- If demand consumes 70 units in the week, next order waits until the following review day, possibly requiring safety stock.</li>
+</ul>
+<p>There are also many other approaches like Just-in-time or ABC-Based Ordering. I encourage the read to check &hellip; for a complete overview on different inventory strategies.</p>
+<hr>
+<h3 id="benefits-and-practical-considerations">Benefits and Practical Considerations<a href="#benefits-and-practical-considerations" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Although SAA cannot cover every possible demand scenario due to computational limits, it provides a <strong>practical and systematic way</strong> to:</p>
+<ul>
+<li>Balance availability and cost</li>
+<li>Make inventory decisions grounded in data rather than intuition</li>
+</ul>
+<p>In many organizations, these policies are <strong>updated periodically</strong> to reflect major changes in demand patterns, maintaining operational continuity while minimizing overhead.</p>
+<hr>
+<h2 id="looking-ahead">Looking Ahead<a href="#looking-ahead" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>By combining AI forecasts with mathematical optimization, spare parts management can be transformed into a <strong>predictable, data-driven process</strong>. This enables supply chain managers to make <strong>better, faster decisions with confidence</strong>, ultimately improving both efficiency and reliability.</p>
 
       </div></div>
 
