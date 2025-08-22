@@ -295,7 +295,7 @@ Moreover, we assume that the reordering policy is fixed for the entire year. Why
 <li><em>Respect inventory rules:</em> Only order when stock is low, and replenish up to the max level.</li>
 </ul>
 <p>Let´s look at a visual example for one single spare part.</p>
-<p>[image]</p>
+<p><img src="/images/inventory_policy.png" alt="inventory_policy.png"></p>
 <p>Perfect, now that we understand how logic works, we can move on to the mathematical formulation.</p>
 <h4 id="sets--parameters">Sets &amp; Parameters<a href="#sets--parameters" class="hanchor" ariaLabel="Anchor">#</a> </h4>
 <table>
@@ -427,7 +427,7 @@ $$</p>
 <li>
 <p><strong>Minimum inventory level enforcement</strong>
 $$
-s_{it}^k - b^k_{it} - \bar{m}<em>i^k \leq M \left( 1 - y</em>{it}^k \right)
+s_{it}^k - b^k_{it} - \bar{m}^k_i \leq M \left( 1 - y_{it}^k \right)
 $$</p>
 </li>
 </ol>
