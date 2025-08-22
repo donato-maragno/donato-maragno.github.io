@@ -1,0 +1,14 @@
+/* Center the main content */
+.container {
+    max-width: 1000px;  /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 0 1rem;    /* Optional: adds padding on sides */
+}
+
+/* Optional: Center text within the container */
+.container p,
+.container ul,
+.container ol,
+.container blockquote {
+    text-align: center;
+}
