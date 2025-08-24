@@ -6,8 +6,22 @@
     <description>Recent content on Donato Maragno</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/about/</guid>
+      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;&#xA;&lt;p&gt;I’m Donato Maragno, a &lt;strong&gt;Scientist&lt;/strong&gt; working on inustrial problems  combining artificial intelligence and mathematical optimization.&lt;br&gt;&#xA;My work focuses on transforming complex data into &lt;strong&gt;reliable and scalable decision-making systems&lt;/strong&gt; across supply chain, logistics, and sustainability.&lt;/p&gt;&#xA;&lt;p&gt;With experience in both &lt;strong&gt;industry and academia&lt;/strong&gt;, I enjoy bridging cutting-edge research with practical applications that deliver measurable business impact.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;professional-experience&#34;&gt;Professional Experience&lt;/h2&gt;&#xA;&lt;h3 id=&#34;amazon--scientist-rme-central&#34;&gt;Amazon – Scientist (RME Central)&lt;/h3&gt;&#xA;&lt;p&gt;&lt;em&gt;Munich, Germany · Oct 2024 – Present&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>/research/</link>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/research/</guid>
+      <description>&lt;h1 id=&#34;research&#34;&gt;Research&lt;/h1&gt;&#xA;&lt;p&gt;My research focuses on the intersection of &lt;strong&gt;artificial intelligence, machine learning, and mathematical optimization&lt;/strong&gt;. I explore how these tools can be combined to support better decision-making in practice, from production planning to last-mile routing and healthcare.&lt;/p&gt;&#xA;&lt;p&gt;Below is a selection of my publications-&lt;/p&gt;&#xA;&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Optimization with Constraint Learning: A Framework and Survey&lt;/strong&gt;&lt;br&gt;&#xA;&lt;em&gt;Adejuyigbe O. Fajemisin, Donato Maragno, Dick den Hertog&lt;/em&gt;&lt;br&gt;&#xA;&lt;em&gt;European Journal of Operational Research, 2023 (Elsevier)&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Mixed-Integer Optimization with Constraint Learning&lt;/strong&gt;&lt;br&gt;&#xA;&lt;em&gt;Donato Maragno, Holly Wiberg, Dimitris Bertsimas, Ş. Ilker Birbil, Dick den Hertog, Adejuyigbe Fajemisin&lt;/em&gt;&lt;br&gt;&#xA;&lt;em&gt;Operations Research, 2023 (INFORMS)&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[Application] Spare Parts Inventory Management: A Deterministic Approach</title>
       <link>/posts/spare-parts-inventory-management/</link>
