@@ -23,7 +23,7 @@
       <description>&lt;div style=&#34;display:flex; align-items:flex-start; gap:2rem;&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;/images/aboutme.jpeg&#34; alt=&#34;Donato Maragno&#34; style=&#34;width:2500px; height:auto; border-radius:8px;&#34;&gt;&#xD;&#xA;  &lt;div&gt;&#xD;&#xA;    &lt;h2&gt;Donato Maragno&lt;/h2&gt;&#xD;&#xA;    &lt;div&gt;&lt;p&gt;I enjoy working at the intersection of &lt;strong&gt;AI and mathematical optimization&lt;/strong&gt; to turn complex data into &lt;strong&gt;scalable decision-making systems&lt;/strong&gt; that drive real business value.&lt;/p&gt;&#xA;&lt;p&gt;In 2025, I earned a PhD in Applied Mathematics and Machine Learning at the &lt;strong&gt;University of Amsterdam&lt;/strong&gt;, with a thesis on Optimization with Constraint Learning (see &lt;a href=&#34;https://dare.uva.nl/search?identifier=25bcb39d-9954-4849-9479-812411bd4d36&#34;&gt;here&lt;/a&gt;). I worked at &lt;strong&gt;MIT&lt;/strong&gt; and &lt;strong&gt;Harvard&lt;/strong&gt; on projects ranging from democratizing optimization to personalized radiotherapy planning.&#xA;Currently, I work as a &lt;strong&gt;Scientist at Amazon&lt;/strong&gt; on projects spanning &lt;strong&gt;supply chain management, logistics, production planning, and sustainability&lt;/strong&gt;. I build optimization frameworks that are robust under uncertainty, practical and scalable for small, medium, and large industries, and able of delivering measurable impact.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>publications</title>
+      <title>Publications</title>
       <link>/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/research/</guid>
