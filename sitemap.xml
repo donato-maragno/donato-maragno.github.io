@@ -2,19 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/about/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/research/</loc>
-    <lastmod>2025-08-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/spare-parts-inventory-management/</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/application/</loc>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/inventory/</loc>
@@ -32,6 +26,10 @@
     <loc>/tags/</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/about/</loc>
+  </url><url>
     <loc>/categories/</loc>
+  </url><url>
+    <loc>/research/</loc>
   </url>
 </urlset>
