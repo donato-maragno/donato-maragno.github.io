@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Application] Spare Parts Inventory Management: A Deterministic Approach</title>
+      <title>[Application] Inventory Management: The Art of Balancing Supply and Demand</title>
       <link>/posts/spare-parts-inventory-management/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
       <guid>/posts/spare-parts-inventory-management/</guid>
-      <description>&lt;p&gt;![[inventory.jpg]]&lt;/p&gt;&#xA;&lt;p&gt;Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: &lt;strong&gt;ensure that the right spare parts are available when needed, while keeping inventory costs under control&lt;/strong&gt;. Achieving this balance requires making informed decisions about:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;How much stock to hold&lt;/li&gt;&#xA;&lt;li&gt;When to reorder&lt;/li&gt;&#xA;&lt;li&gt;How to allocate limited budgets across multiple sites and parts&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;inventory-policies&#34;&gt;Inventory policies&lt;/h3&gt;&#xA;&lt;p&gt;A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;/images/inventory.jpg&#34; alt=&#34;inventory.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;In this post, I explain what &lt;strong&gt;inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization&lt;/strong&gt;. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a &lt;strong&gt;practical case study on spare parts inventory management&lt;/strong&gt;, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-inventory-management&#34;&gt;What is inventory management&lt;/h2&gt;</description>
     </item>
     <item>
       <title>About Me</title>

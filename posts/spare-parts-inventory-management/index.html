@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   
-    <title>[Application] Spare Parts Inventory Management: A Deterministic Approach :: Donato Maragno</title>
+    <title>[Application] Inventory Management: The Art of Balancing Supply and Demand :: Donato Maragno</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="![[inventory.jpg]]
-Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: ensure that the right spare parts are available when needed, while keeping inventory costs under control. Achieving this balance requires making informed decisions about:
-How much stock to hold When to reorder How to allocate limited budgets across multiple sites and parts Inventory policies A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:
-" />
+<meta name="description" content="
+In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
+What is inventory management" />
 <meta name="keywords" content="" />
 
 <title>
   
-    [Application] Spare Parts Inventory Management: A Deterministic Approach | Donato Maragno
+    [Application] Inventory Management: The Art of Balancing Supply and Demand | Donato Maragno
   
 </title>
 
@@ -87,11 +86,10 @@ How much stock to hold When to reorder How to allocate limited budgets across mu
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="[Application] Spare Parts Inventory Management: A Deterministic Approach">
-<meta property="og:description" content="![[inventory.jpg]]
-Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: ensure that the right spare parts are available when needed, while keeping inventory costs under control. Achieving this balance requires making informed decisions about:
-How much stock to hold When to reorder How to allocate limited budgets across multiple sites and parts Inventory policies A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:
-" />
+<meta property="og:title" content="[Application] Inventory Management: The Art of Balancing Supply and Demand">
+<meta property="og:description" content="
+In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
+What is inventory management" />
 <meta property="og:url" content="/posts/spare-parts-inventory-management/" />
 <meta property="og:site_name" content="Donato Maragno" />
 
@@ -180,7 +178,7 @@ How much stock to hold When to reorder How to allocate limited budgets across mu
     
 <article class="post">
   <h1 class="post-title">
-    <a href="/posts/spare-parts-inventory-management/">[Application] Spare Parts Inventory Management: A Deterministic Approach</a>
+    <a href="/posts/spare-parts-inventory-management/">[Application] Inventory Management: The Art of Balancing Supply and Demand</a>
   </h1>
   <div class="post-meta"><time class="post-date">2025-08-21</time></div>
 
@@ -203,286 +201,11 @@ How much stock to hold When to reorder How to allocate limited budgets across mu
   
 
   <div class="post-content"><div>
-        <p>![[inventory.jpg]]</p>
-<p>Efficient spare parts inventory management is a critical challenge for any organization that relies on complex equipment and continuous operations. The goal is simple in theory but difficult in practice: <strong>ensure that the right spare parts are available when needed, while keeping inventory costs under control</strong>. Achieving this balance requires making informed decisions about:</p>
-<ul>
-<li>How much stock to hold</li>
-<li>When to reorder</li>
-<li>How to allocate limited budgets across multiple sites and parts</li>
-</ul>
+        <p><img src="/images/inventory.jpg" alt="inventory.jpg"></p>
 <hr>
-<h3 id="inventory-policies">Inventory policies<a href="#inventory-policies" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>A company’s choice of reordering policy depends on several critical factors: the nature of demand—whether steady, intermittent, lumpy, or seasonal; the underlying cost structure, including stockout, holding, and ordering costs; and the organization’s capability to implement advanced inventory strategies, which often require skilled personnel and sophisticated decision-support systems. Here, I present three among the most adopted policies:</p>
-<h5 id="1-s-q--reorder-point--fixed-order-quantity-policy">1. (s, Q) — Reorder Point / Fixed Order Quantity Policy<a href="#1-s-q--reorder-point--fixed-order-quantity-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<ul>
-<li><strong>How it works:</strong>
-<ul>
-<li>When stock drops to a <strong>reorder point (s)</strong>, place an order of a <strong>fixed quantity (Q)</strong>.</li>
-</ul>
-</li>
-<li><strong>Best for:</strong> Items with stable demand or critical items where stockouts are costly.</li>
-<li><strong>Implication:</strong> The order size never changes.</li>
-<li><strong>Pros:</strong> Simple to calculate; ensures a buffer against stockouts.</li>
-<li><strong>Cons:</strong> Requires continuous inventory monitoring.</li>
-<li><strong>Example:</strong>
-<ul>
-<li>s = 21 units, Q = 50 units</li>
-<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
-<li>Current inventory drops to 10 → order 50 units → new inventory = 60</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-s-s-policy">2. (s, S) Policy<a href="#2-s-s-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<ul>
-<li><strong>How it works:</strong>
-<ul>
-<li>When inventory falls to <strong>s</strong>, order enough to raise stock to <strong>S</strong>.</li>
-<li>Order quantity varies depending on current inventory level.</li>
-</ul>
-</li>
-<li><strong>Best for:</strong> Items with variable demand.</li>
-<li><strong>Implication:</strong> The order quantity <strong>varies depending on current stock</strong>.</li>
-<li><strong>Pros:</strong> Flexible; reduces risk of overstocking.</li>
-<li><strong>Cons:</strong> More complex than fixed-order policies and requires continuous inventory monitoring.</li>
-<li><strong>Example:</strong>
-<ul>
-<li>s = 21 units, S = 70 units</li>
-<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
-<li>Current inventory drops to 10 → order 60 units → new inventory = 70</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-periodic-review-p-q-policy">3. Periodic Review (P, Q) Policy<a href="#3-periodic-review-p-q-policy" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<ul>
-<li><strong>How it works:</strong>
-<ul>
-<li>Inventory is checked at <strong>fixed intervals</strong> (e.g., weekly, monthly).</li>
-<li>If inventory is below a target, place an order of a <strong>fixed quantity (Q)</strong>.</li>
-</ul>
-</li>
-<li><strong>Best for:</strong> Items where continuous monitoring is costly or less critical.</li>
-<li><strong>Pros:</strong> Simplifies monitoring and ordering schedules.</li>
-<li><strong>Cons:</strong> Requires larger safety stock to cover intervals between reviews.</li>
-<li><strong>Example:</strong><br>
-- Review period P = 1 week, Q = 50, safety stock = 40.
-- Inventory on review day = 30 → order 50 → new inventory = 80.<br>
-- If demand consumes 70 units in the week, next order waits until the following review day, possibly requiring safety stock.</li>
-</ul>
-<p>Other policies include  Just-in-time or ABC-Based Ordering. I encourage the read to check this <a href="https://www.researchgate.net/publication/240259211_A_Review_of_Inventory_Management_Research_in_Major_Logistics_Journals">article on inventory management</a> for a broader overview on inventory policies.</p>
-<p>Now, I would like to show you how to use mathematical optimization to find an optimal (s, S) policy specifically for spare parts inventory management.</p>
+<p>In this post, I explain what <strong>inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization</strong>. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a <strong>practical case study on spare parts inventory management</strong>, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.</p>
 <hr>
-<h3 id="a-mathematical-formulation">A Mathematical Formulation<a href="#a-mathematical-formulation" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>Let´s consider a spare parts <strong>multi-item, multi-site, multi-period inventory optimization</strong> problem. The goal is to find for each spare part an (s, S) policy that <strong>maximizes global service level</strong> while respecting budget constraints.</p>
-<p>We can formulate this problem as a mixed-integer optimization (MIO) model, a very intuitive way to represent reality using mathematical equations, and assume that demand is known and stored in a 52-dimensional vector (one full year) for each spare part. <em>I will show in another post how to deal with demand uncertainty</em>.
-Moreover, we assume that the reordering policy is fixed for the entire year. Why keep it fixed? Because constantly changing rules for every spare part would create too much operational overhead for planners. Instead, we aim for a consistent plan that keeps operations running smoothly while balancing availability and costs.</p>
-<h5 id="how-weekly-operations-work">How Weekly Operations Work<a href="#how-weekly-operations-work" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<p>Each week follows a simple sequence:</p>
-<ol>
-<li><em>Placed orders arrive</em> at the start of the week.</li>
-<li><em>Demand happens</em>: parts are used, and backorders may occur.</li>
-<li><em>Order review</em> at the end of the week: if the stock after demand falls *below the minimum level, a replenishment order is issued to bring the inventory *<em>up to the maximum level</em>.</li>
-</ol>
-<p>Every part has a deterministic <em>lead time</em>, which determines when an order arrives. For example:</p>
-<ul>
-<li><em>Lead time = 0</em> → an order placed at the end of this week arrives at the start of next week.</li>
-<li><em>Lead time &gt; 0</em> → the order arrives further into the future.</li>
-</ul>
-<p>This ensures we plan ahead, avoiding stockouts while respecting delivery delays.</p>
-<p>At a high level, the model is designed to:</p>
-<ul>
-<li><em>Maximize service levels:</em> Keep parts available when needed. This is defined as the percentage of weeks in which we have stockouts.</li>
-<li><em>Stay within budget:</em> Limit total purchase costs.</li>
-<li><em>Respect inventory rules:</em> Only order when stock is low, and replenish up to the max level.</li>
-</ul>
-<p>Let´s look at a visual example for one single spare part.</p>
-<p>![[inventory_policy.png]]</p>
-<p>Perfect, now that we understand how logic works, we can move on to the mathematical formulation.</p>
-<h4 id="sets--parameters">Sets &amp; Parameters<a href="#sets--parameters" class="hanchor" ariaLabel="Anchor">#</a> </h4>
-<table>
-  <thead>
-      <tr>
-          <th>Parameter</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>$$\mathcal{K}$$</td>
-          <td>Set of spare parts</td>
-      </tr>
-      <tr>
-          <td>$$\mathcal{C}$$</td>
-          <td>Set of sites</td>
-      </tr>
-      <tr>
-          <td>$$\mathcal{T}$$</td>
-          <td>Set of time periods</td>
-      </tr>
-      <tr>
-          <td>$$d^k_{it}$$</td>
-          <td>Demand for spare part k at site i in period t</td>
-      </tr>
-      <tr>
-          <td>$$c_k$$</td>
-          <td>Unit purchase cost of spare part k</td>
-      </tr>
-      <tr>
-          <td>$$B$$</td>
-          <td>Total budget available for purchase orders</td>
-      </tr>
-      <tr>
-          <td>$$l_k$$</td>
-          <td>Lead time of spare part k</td>
-      </tr>
-      <tr>
-          <td>$$M$$</td>
-          <td>A sufficiently large constant (big-M)</td>
-      </tr>
-      <tr>
-          <td>$$\mu_k$$</td>
-          <td>Minimum required service level for spare part k</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="decision-variables">Decision Variables<a href="#decision-variables" class="hanchor" ariaLabel="Anchor">#</a> </h4>
-<table>
-  <thead>
-      <tr>
-          <th>Vars</th>
-          <th>Meaning</th>
-          <th>Type</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>$$s_{it}^k$$</td>
-          <td>Inventory of spare part k at site i and time t</td>
-          <td>Cont.</td>
-      </tr>
-      <tr>
-          <td>$$q_{it}^k$$</td>
-          <td>Order quantity of spare part k at site i and time t</td>
-          <td>Cont.</td>
-      </tr>
-      <tr>
-          <td>$$y_{it}^k$$</td>
-          <td>1 if an order for part k is issued at site i and time t, 0 otherwise</td>
-          <td>Binary</td>
-      </tr>
-      <tr>
-          <td>$$b_{it}^k$$</td>
-          <td>Backlog of spare part k at site i and time t</td>
-          <td>Cont.</td>
-      </tr>
-      <tr>
-          <td>$$p_{it}^k$$</td>
-          <td>1 if there is a stockout (service not met) for part k at site i and time t, 0 otherwise</td>
-          <td>Binary</td>
-      </tr>
-      <tr>
-          <td>$$\bar{m}_k$$</td>
-          <td>Minimum inventory threshold for spare part k</td>
-          <td>Cont.</td>
-      </tr>
-      <tr>
-          <td>$$\bar{M}_k$$</td>
-          <td>Maximum inventory threshold for spare part k</td>
-          <td>Cont.</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h3 id="objective-function">Objective Function<a href="#objective-function" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>$$
-\max \sum_{k\in \mathcal{K} }\sum_{i\in \mathcal{C} } \left( 1 - \frac{\sum_{t \in \mathcal{T}} p^k_{it}}{T} \right)
-$$</p>
-<p>Maximizes the global service level, computed as the percentage of periods without stockouts.</p>
-<h3 id="constraints">Constraints<a href="#constraints" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li>
-<p><strong>Budget constraint</strong>
-$$
-\sum_{k\in \mathcal{K} }\sum_{i\in \mathcal{C} }\sum_{t\in \mathcal{T} } c^k_i q^k_{it} \leq B
-$$
-Ensures total purchase order spend does not exceed the budget.</p>
-</li>
-<li>
-<p><strong>Inventory balance constraint</strong>
-$$s_{it-1}^k + q^k_{it-l^k_i-1} + b^k_{it} = d_{it}^k + b^k_{it-1} + s_{it}^k$$
-Tracks stock, backlog, and incoming orders for each item-site-period.</p>
-</li>
-<li>
-<p><strong>Logical order constraint</strong>
-$$
-q_{it}^k \leq M y_{it}^k
-$$
-Links continuous order quantities <code>q</code> to binary order decisions <code>y</code>.</p>
-</li>
-<li>
-<p><strong>At most one order per lead time window</strong>
-$$
-\sum_{t&rsquo;=t}^{t+l^k_i} y_{it&rsquo;}^k \leq 1
-$$</p>
-</li>
-<li>
-<p><strong>Minimum inventory level enforcement</strong>
-$$
-s_{it}^k - b^k_{it} - \bar{m}^k_i \leq M \left( 1 - y_{it}^k \right)
-$$</p>
-</li>
-</ol>
-<p>$$
-\bar{m}^k_i + b^k_{it} - s_{it}^k + 1 \leq M y_{it}^k + M\sum_{t&rsquo;=t-l^k_i}^{t-1} y^k_{it&rsquo;}
-$$
-Ensures a PO is issued <strong>if and only if</strong> the stock at the end of the period is at or below the minimum level.</p>
-<ol start="6">
-<li>
-<p><strong>Minimum cycle service level</strong>
-$$
-\bar{m}_i^k \geq \mu^k_i
-$$
-Guarantees a minimum service level for each item-site.</p>
-</li>
-<li>
-<p><strong>Maximum inventory level constraints</strong></p>
-</li>
-</ol>
-<p>$$
-q_{it}^k \leq \bar{M}^k_i - s_{it}^k + b^k_{it} + M \left( 1 - y^k_{it} \right)
-$$</p>
-<p>$$
-q_{it}^k \geq \bar{M}^k_i - s_{it}^k + b^k_{it} - M \left( 1 - y_{it}^k \right)
-$$</p>
-<p>Ensures that if an order is placed, the quantity brings stock <strong>up to the max level</strong>.</p>
-<ol start="8">
-<li>
-<p><strong>Service level binary variables</strong>
-$$
-b^k_{it} \leq M p^k_{it} \quad\text{and}\quad p^k_{it} \leq b^k_{it}
-$$
-Forces binary variables <code>p</code> to 1 when there is backlog.</p>
-</li>
-<li>
-<p><strong>Order issuance condition</strong></p>
-</li>
-</ol>
-<p>$$
-s^k_{it} - b^k_{it} - \bar{m}^k_i \leq 0 \Leftrightarrow \sum_{t&rsquo;=t-l_i^k}^t y^k_{it} = 1
-$$</p>
-<p>A PO can be issued <strong>only if</strong> stock on hand minus backlog is at or below the minimum level.</p>
-<ol start="10">
-<li><strong>“Up to max” order quantity</strong></li>
-</ol>
-<p>$$
-q_{it}^k = (\bar{M}^k_i - s^k_{it} + b^k_{it}) y_{it}^k
-$$</p>
-<p>Linearization of the quadratic constraint to enforce replenishment <strong>up to max</strong>.</p>
-<ol start="11">
-<li><strong>Variable domains</strong>
-$$
-q^k_{it}, s^k_{it}, b^k_{it}, \bar{m}^k_i, \bar{M}^k_i \geq 0; \quad y^k_{it}, p_{it}^k \in {0,1}
-$$</li>
-</ol>
+<h2 id="what-is-inventory-management">What is inventory management<a href="#what-is-inventory-management" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 
       </div></div>
 
