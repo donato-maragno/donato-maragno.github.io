@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
   
-    <title>[Application] Inventory Management: The Art of Balancing Supply and Demand :: Donato Maragno</title>
+    <title>Inventory Management: The Art of Balancing Supply and Demand :: Donato Maragno</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
-What is inventory management" />
+In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
+What is Inventory Management, and Why Does it Matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
+" />
 <meta name="keywords" content="" />
 
 <title>
   
-    [Application] Inventory Management: The Art of Balancing Supply and Demand | Donato Maragno
+    Inventory Management: The Art of Balancing Supply and Demand | Donato Maragno
   
 </title>
 
@@ -86,10 +87,11 @@ What is inventory management" />
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="[Application] Inventory Management: The Art of Balancing Supply and Demand">
+<meta property="og:title" content="Inventory Management: The Art of Balancing Supply and Demand">
 <meta property="og:description" content="
-In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
-What is inventory management" />
+In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
+What is Inventory Management, and Why Does it Matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
+" />
 <meta property="og:url" content="/posts/spare-parts-inventory-management/" />
 <meta property="og:site_name" content="Donato Maragno" />
 
@@ -178,7 +180,7 @@ What is inventory management" />
     
 <article class="post">
   <h1 class="post-title">
-    <a href="/posts/spare-parts-inventory-management/">[Application] Inventory Management: The Art of Balancing Supply and Demand</a>
+    <a href="/posts/spare-parts-inventory-management/">Inventory Management: The Art of Balancing Supply and Demand</a>
   </h1>
   <div class="post-meta"><time class="post-date">2025-08-21</time></div>
 
@@ -203,9 +205,353 @@ What is inventory management" />
   <div class="post-content"><div>
         <p><img src="/images/inventory.jpg" alt="inventory.jpg"></p>
 <hr>
-<p>In this post, I explain what <strong>inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization</strong>. I first discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a <strong>practical case study on spare parts inventory management</strong>, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.</p>
+<p>In this post, I explain what <strong>inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization</strong>. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a <strong>practical case study on spare parts inventory management</strong>, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.</p>
 <hr>
-<h2 id="what-is-inventory-management">What is inventory management<a href="#what-is-inventory-management" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="what-is-inventory-management-and-why-does-it-matter">What is Inventory Management, and Why Does it Matter?<a href="#what-is-inventory-management-and-why-does-it-matter" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components.
+On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.</p>
+<h5 id="some-notation-before-continuing">Some notation before continuing<a href="#some-notation-before-continuing" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>to make sense of inventory management, it helps to agree on some basic terms. These are the building blocks of most models and policies:</p>
+<ul>
+<li>
+<p><strong>Policy</strong>: The rule that governs ordering decisions: when to order and how much.</p>
+</li>
+<li>
+<p><strong>Service Level</strong>: The ability to meet customer demand without running out of stock. It can have more specific definitions like:</p>
+<ul>
+<li><em>cycle service level</em>: <em>the probability of not stocking out between one replenishment and the next</em>.</li>
+<li><em>Fill rate</em>: the fraction of demand that can be met immediately from inventory</li>
+</ul>
+</li>
+<li>
+<p><strong>Lead Time</strong>:The time between placing an order and receiving it. Lead time can be stable (e.g., always 5 days) or highly variable (sometimes 2 days, sometimes 12), and this uncertainty has a big impact on how much safety stock you need.</p>
+</li>
+<li>
+<p><strong>Safety Stock</strong>: Extra inventory held as a buffer against uncertainty in demand or lead time. Think of it as insurance: the more volatile your environment, the more safety stock you may need.</p>
+</li>
+<li>
+<p><strong>Backorder vs. Lost Sale</strong>: When demand cannot be met:</p>
+<ul>
+<li><em>Backorder</em>: you promise to deliver later.</li>
+<li><em>Lost Sale</em>: the customer walks away, and the revenue is gone for good.</li>
+</ul>
+</li>
+<li>
+<p><strong>Holding Cost</strong>: The cost of keeping stock. This includes more than just warehouse rent: tied-up capital, insurance, depreciation, spoilage, and obsolescence all count.</p>
+</li>
+<li>
+<p><strong>Ordering Cost</strong>: The fixed cost incurred every time you place an order, regardless of size (administration, setup, paperwork, logistics). This is why large, infrequent orders can be attractive.</p>
+</li>
+<li>
+<p><strong>Stockout (or Shortage) Cost</strong>: The cost of not having inventory when needed. This can be explicit (penalties, expediting fees) or implicit (lost sales, unhappy customers, reputational damage).</p>
+</li>
+<li>
+<p><strong>Capacity</strong>: Practical limits such as storage space, supplier production limits, or transport bottlenecks.</p>
+</li>
+<li>
+<p><strong>Multi-Echelon Inventory</strong> – When stock is spread across multiple layers of a network (plants, central warehouses, regional depots, retail stores). Managing them in isolation leads to inefficiencies; managing them as a system unlocks savings and higher service.</p>
+</li>
+</ul>
+<h5 id="a-policy-is-all-you-need">A policy is all you need<a href="#a-policy-is-all-you-need" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Whether we’re talking about spare parts for an airline, fast-moving goods in a supermarket, or raw materials for a manufacturer, what differentiate inventory systems from each others is the adopted reordering policy.
+Inventory management without policies is like playing chess without knowing how the pieces move, every decision feels ad hoc. Policies provide structure. They translate abstract objectives (like “keep service level above 95%” or “minimize holding cost”) into operational rules that can be executed day to day.</p>
+<p>Some of the most well-known policies are deceptively simple:</p>
+<h6 id="s-q-reorder-point--fixed-order-quantity-policy">(s, Q) Reorder Point / Fixed Order Quantity Policy<a href="#s-q-reorder-point--fixed-order-quantity-policy" class="hanchor" ariaLabel="Anchor">#</a> </h6>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>When stock drops to a <strong>reorder point (s)</strong>, place an order of a <strong>fixed quantity (Q)</strong>.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items with stable demand or critical items where stockouts are costly.</li>
+<li><strong>Implication:</strong> The order size never changes.</li>
+<li><strong>Pros:</strong> Simple to calculate; ensures a buffer against stockouts.</li>
+<li><strong>Cons:</strong> Requires continuous inventory monitoring.</li>
+<li><strong>Example:</strong>
+<ul>
+<li>s = 21 units, Q = 50 units</li>
+<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
+<li>Current inventory drops to 10 → order 50 units → new inventory = 60</li>
+</ul>
+</li>
+</ul>
+<h6 id="s-s-policy">(s, S) Policy<a href="#s-s-policy" class="hanchor" ariaLabel="Anchor">#</a> </h6>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>When inventory falls to <strong>s</strong>, order enough to raise stock to <strong>S</strong>.</li>
+<li>Order quantity varies depending on current inventory level.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items with variable demand.</li>
+<li><strong>Implication:</strong> The order quantity <strong>varies depending on current stock</strong>.</li>
+<li><strong>Pros:</strong> Flexible; reduces risk of overstocking.</li>
+<li><strong>Cons:</strong> More complex than fixed-order policies and requires continuous inventory monitoring.</li>
+<li><strong>Example:</strong>
+<ul>
+<li>s = 21 units, S = 70 units</li>
+<li>Current inventory drops to 20 → order 50 units → new inventory = 70</li>
+<li>Current inventory drops to 10 → order 60 units → new inventory = 70</li>
+</ul>
+</li>
+</ul>
+<h6 id="periodic-review-p-q-policy">Periodic Review (P, Q) Policy<a href="#periodic-review-p-q-policy" class="hanchor" ariaLabel="Anchor">#</a> </h6>
+<ul>
+<li><strong>How it works:</strong>
+<ul>
+<li>Inventory is checked at <strong>fixed intervals</strong> (e.g., weekly, monthly).</li>
+<li>If inventory is below a target, place an order of a <strong>fixed quantity (Q)</strong>.</li>
+</ul>
+</li>
+<li><strong>Best for:</strong> Items where continuous monitoring is costly or less critical.</li>
+<li><strong>Pros:</strong> Simplifies monitoring and ordering schedules.</li>
+<li><strong>Cons:</strong> Requires larger safety stock to cover intervals between reviews.</li>
+<li><strong>Example:</strong><br>
+- Review period P = 1 week, Q = 50, safety stock = 40.
+- Inventory on review day = 30 → order 50 → new inventory = 80.<br>
+- If demand consumes 70 units in the week, next order waits until the following review day, possibly requiring safety stock.</li>
+</ul>
+<p>Each policy comes with strengths and blind spots. A simple reorder point policy may work well in stable environments but break down when variability spikes. Conversely, more sophisticated dynamic policies require stronger data and computational support.</p>
+<p>The real art lies not just in picking a policy, but in optimizing its parameters. The difference between a reorder point of 50 units vs. 55 can mean thousands of euros in holding cost or service penalties over a year. That’s why optimization models are often tasked with finding these values, rather than leaving them to gut feeling.</p>
+<h3 id="uncertainty-the-ever-present-wild-card">Uncertainty: The Ever-Present Wild Card<a href="#uncertainty-the-ever-present-wild-card" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>If policies are the rules of the game, uncertainty is the opponent that refuses to play fair. It’s the defining feature of inventory problems, what makes them fascinating, frustrating, and financially critical. Let´s see where uncertainty might appear, but I will write another post deep diving into it.</p>
+<p><strong>Demand variability</strong> is the most obvious source. Forecasts, no matter how advanced, are imperfect. Promotions can double demand overnight. A single customer order might dwarf the “average” week in industries like heavy machinery or aerospace.
+Then there’s <strong>supply-side uncertainty</strong>. Lead times are rarely constant. A supplier might deliver in 5 days on average, but sometimes it’s 2, sometimes 12. Add in risks like port congestion, strikes, or geopolitical shocks, and suddenly the neat numbers in your planning file look less reassuring.
+And don’t forget <strong>internal uncertainty</strong>, production lines that break down, IT systems that hiccup, or simply human error in recording transactions.</p>
+<p>There are two main ways to respond to it:</p>
+<ul>
+<li><strong>Safety stock</strong>: paying an insurance premium in the form of extra inventory.</li>
+<li><strong>Network flexibility</strong>: dual sourcing or dynamic reallocation between warehouses.
+Both of them aim at increasing robustness in the inventory management system.</li>
+</ul>
+<p>From a mathematical perspective, uncertainty is what turns a simple deterministic model into a rich stochastic or robust optimization problem, and I love it. Instead of asking, <em>“What’s the optimal order if demand next week is 100 units?”</em>, the real question should be, <em>“What’s the policy that works best across hundreds of possible futures?”</em>. But again, this is for another post. Now let´s go back to a easier deterministic scenario.</p>
+<h1 id="an-optimal-policy-is-all-you-need">An <em>OPTIMAL</em> policy is all you need<a href="#an-optimal-policy-is-all-you-need" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>Yes, you don’t just need <em>a</em> policy; you need the <em>optimal</em> one. A policy is a rulebook for how inventory decisions are made: when to order, and how much. But among the many possible rules, some are clearly better than others in terms of cost and service. An <em>optimal</em> policy is the one that achieves the desired objectives (high availability, low cost) without wasting resources.</p>
+<p>Of course, the real world is full of uncertainty: demand fluctuates, lead times vary, and suppliers can fail. But before dealing with those messy realities, it’s crucial to first build intuition in a simpler setting, the <strong>deterministic case</strong>, where demand and lead times are perfectly known. This isn’t realistic, but it provides solid foundations: by understanding the “clean” case, we know what we’re aiming for before layering on uncertainty.</p>
+<p>How to optimize a policy depends on the policy itself. To give you a concrete example, I will use the (s, S) policy which is simple, intuitive, and widely used in both research and practice.  We have a <strong>multi-item multi-period inventory</strong> problem. The goal is to find for each item an (s, S) policy that <strong>minimizes costs</strong> while respecting service level constraints. <em>Note that a similar methodology could be applied to the case where the service level is maximized and the spend constrained to a predefined budget.</em></p>
+<p>We model this problem using <strong>mixed-integer optimization (MIO)</strong>, a powerful yet intuitive way to translate real-world decisions into mathematical equations. For each item, demand is assumed to be known in advance and represented as a 52-dimensional vector (one entry per week over a full year). We also assume that the <strong>reordering policy remains fixed throughout the year</strong>. Why? Because constantly adjusting rules for every single item would overwhelm planners with operational complexity. A stable, year-long policy provides consistency, reduces overhead, and ensures that day-to-day operations flow smoothly while still balancing availability and costs.
+Of course, nothing stops us from allowing the policy to vary over time, if that’s desirable, we simply extend the formulation to include a time dimension in the policy.</p>
+<p><strong>The weekly sequence</strong>
+To avoid confusion, let’s pin down the order of events in each week under this deterministic setting:</p>
+<ol>
+<li><strong>Placed orders arrive</strong> at the start of the week (subject to lead time).</li>
+<li><strong>Demand happens</strong>: items are sold. If stock is insufficient, a backorder is recorded.</li>
+<li><strong>Review and order</strong>: at the end of the week, if stock is below <em>s</em>, order enough to raise it up to <em>S</em>.
+Lead time is deterministic and critical:</li>
+</ol>
+<ul>
+<li><em>Lead time = 0</em>: an order placed at the end of this week arrives right at the start of next week.</li>
+<li><em>Lead time &gt; 0</em>: the order will only show up later, requiring careful planning to avoid stockouts.
+This simple cycle ensures that replenishments are both systematic and predictable.</li>
+</ul>
+<p>Let´s look at a visual example for one single spare part.
+<img src="/images/inventory_policy.png" alt="inventory_policy.png">
+The figure above illustrates how an _(s, S) = (3, 7) _ policy unfolds over time for one part assuming a lead time of 2 weeks:</p>
+<ul>
+<li><strong>Stock trajectory (top plot)</strong>: The light blue line shows inventory over weeks. When stock dips below <em>s</em> (the dashed lower line), an order is triggered, and stock jumps back up to <em>S</em> (the dashed upper line) when the order arrives minus the orders fulfilled or backorders cumulated during the lead time.</li>
+<li><strong>Demand (bars, bottom plot)</strong>: Each week, demand reduces the available stock. If demand exceeds available stock, a <strong>stockout</strong> occurs (highlighted in red).</li>
+<li><strong>Orders (stars)</strong>: These mark the time when an order is sent out.</li>
+</ul>
+<p>Perfect, now that we understand how the logic works, we can move on to the mathematical formulation.</p>
+<h1 id="mathematical-model">Mathematical Model<a href="#mathematical-model" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>A bit of math and we are going to have a beautifully working policy. Don’t worry, it’s going to be easy to follow, and I’ll even show you how to code it. Pretty cool, right?!</p>
+<h4 id="sets--parameters">Sets &amp; Parameters<a href="#sets--parameters" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>We begin with the Sets and Parameters, the building blocks of the model: items, time horizon and step, future demand per item, unit purchase cost, ordering and handling costs, and lead time. (I’ll cover demand forecasting in a separate post.)</p>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$$\mathcal{i}$$</td>
+          <td>Set of items</td>
+      </tr>
+      <tr>
+          <td>$$\mathcal{T}$$</td>
+          <td>Set of time periods</td>
+      </tr>
+      <tr>
+          <td>$$d_{it}$$</td>
+          <td>Demand for item i in period t</td>
+      </tr>
+      <tr>
+          <td>$$c^p_i$$</td>
+          <td>Unit purchase cost of item i</td>
+      </tr>
+      <tr>
+          <td>$$c^h_i$$</td>
+          <td>Unit handling cost of item i</td>
+      </tr>
+      <tr>
+          <td>$$c^o_i$$</td>
+          <td>Ordering cost of item i</td>
+      </tr>
+      <tr>
+          <td>$$SL_i$$</td>
+          <td>Minimum service level for item i</td>
+      </tr>
+      <tr>
+          <td>$$l_i$$</td>
+          <td>Lead time of item i</td>
+      </tr>
+      <tr>
+          <td>$$M$$</td>
+          <td>A sufficiently large constant (big-M)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="decision-variables">Decision Variables<a href="#decision-variables" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>Then, we have to define the decision variables, the parts of the model that are not fixed but will be determined by the optimization.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Vars</th>
+          <th>Meaning</th>
+          <th>Type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$$s_{it}$$</td>
+          <td>Inventory of item i and time t</td>
+          <td>Cont.</td>
+      </tr>
+      <tr>
+          <td>$$q_{it}$$</td>
+          <td>Order quantity of item i at time t</td>
+          <td>Cont.</td>
+      </tr>
+      <tr>
+          <td>$$y_{it}$$</td>
+          <td>1 if an order for item i at time t, 0 otherwise</td>
+          <td>Binary</td>
+      </tr>
+      <tr>
+          <td>$$b_{it}$$</td>
+          <td>Backlog of item i at time t</td>
+          <td>Cont.</td>
+      </tr>
+      <tr>
+          <td>$$p_{it}$$</td>
+          <td>1 if there is a stockout (service not met) item i at time t, 0 otherwise</td>
+          <td>Binary</td>
+      </tr>
+      <tr>
+          <td>$$\bar{m}$$</td>
+          <td>Minimum inventory threshold for item i</td>
+          <td>Cont.</td>
+      </tr>
+      <tr>
+          <td>$$\bar{M}$$</td>
+          <td>Maximum inventory threshold for item i</td>
+          <td>Cont.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="objective-function">Objective Function<a href="#objective-function" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>We want to minimize the <strong>sum of purchasing, ordering, and holding costs</strong>:
+$$
+\min \sum_{i \in \mathcal{I}} \sum_{t \in \mathcal{T}} (c^p_i q_{it} + c^o_i y_{it} + c^h_i s_{it})
+$$</p>
+<ul>
+<li>$c^p_i q_{it}$→ cost to buy items.</li>
+<li>$c^o_i y_{it}$ → cost to place an order.</li>
+<li>$c^h_i * s_{it}$ → cost to store inventory.</li>
+</ul>
+<h3 id="constraints">Constraints<a href="#constraints" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<ol>
+<li><strong>Service level constraint</strong></li>
+</ol>
+<p>$$
+\sum_{t \in \mathcal{T}} p_{it} \le (1 - SL_i) , |\mathcal{T}|, \quad \forall i
+$$
+This ensures that stockouts occur in at most a fraction of periods, guaranteeing the minimum service level for each item.</p>
+<p>$$
+b_{it} \le M , p_{it}, \quad p_{it} \le b_{it}, \quad \forall i, t
+$$
+These inequalities define the binary stockout variable <code>p</code>: it is 1 whenever there is a backlog.</p>
+<ol start="2">
+<li>
+<p><strong>Inventory balance constraint</strong>
+$$s_{it-1} + q_{it-l^k_i-1} + b_{it} = d_{it} + b^k_{it-1} + s_{it}, \quad \forall i, t$$
+This constraint ensures that the inventory at the end of each period correctly accounts for previous stock, arriving orders, demand, and any backlog.</p>
+</li>
+<li>
+<p><strong>Logical order constraint</strong>
+$$
+q_{it} \leq M y_{it}, \quad \forall i, t
+$$
+This constraint links continuous order quantities <code>q</code> to binary order decisions <code>y</code>. Basically, it ensures that a purchase order (and its associated ordering cost) is recorded <strong>only when you actually place it</strong>.</p>
+</li>
+<li>
+<p><strong>At most one order per lead time window</strong>
+$$
+\sum_{t&rsquo;=t}^{t+l_i} y_{it&rsquo;} \leq 1
+$$</p>
+</li>
+<li>
+<p><strong>Minimum inventory level enforcement</strong>
+$$
+s_{it}^k - b^k_{it} - \bar{m}^k_i \leq M \left( 1 - y_{it}^k \right)
+$$</p>
+</li>
+</ol>
+<p>$$
+\bar{m}^k_i + b^k_{it} - s_{it}^k + 1 \leq M y_{it}^k + M\sum_{t&rsquo;=t-l^k_i}^{t-1} y^k_{it&rsquo;}
+$$
+Ensures a purchase order is issued <strong>if and only if</strong> the stock at the end of the period is at or below the minimum level.</p>
+<ol start="6">
+<li>
+<p><strong>Minimum cycle service level</strong>
+$$
+\bar{m}_i^k \geq \mu^k_i
+$$
+Guarantees a minimum service level for each item-site.</p>
+</li>
+<li>
+<p><strong>Maximum inventory level constraints</strong></p>
+</li>
+</ol>
+<p>$$
+q_{it}^k \leq \bar{M}^k_i - s_{it}^k + b^k_{it} + M \left( 1 - y^k_{it} \right)
+$$</p>
+<p>$$
+q_{it}^k \geq \bar{M}^k_i - s_{it}^k + b^k_{it} - M \left( 1 - y_{it}^k \right)
+$$</p>
+<p>Ensures that if an order is placed, the quantity brings stock <strong>up to the max level</strong>.</p>
+<ol start="8">
+<li>
+<p><strong>Service level binary variables</strong>
+$$
+b^k_{it} \leq M p^k_{it} \quad\text{and}\quad p^k_{it} \leq b^k_{it}
+$$
+Forces binary variables <code>p</code> to 1 when there is backlog.</p>
+</li>
+<li>
+<p><strong>Order issuance condition</strong></p>
+</li>
+</ol>
+<p>$$
+s^k_{it} - b^k_{it} - \bar{m}^k_i \leq 0 \Leftrightarrow \sum_{t&rsquo;=t-l_i^k}^t y^k_{it} = 1
+$$</p>
+<p>A PO can be issued <strong>only if</strong> stock on hand minus backlog is at or below the minimum level.</p>
+<ol start="10">
+<li><strong>“Up to max” order quantity</strong></li>
+</ol>
+<p>$$
+q_{it}^k = (\bar{M}^k_i - s^k_{it} + b^k_{it}) y_{it}^k
+$$</p>
+<p>Linearization of the quadratic constraint to enforce replenishment <strong>up to max</strong>.</p>
+<ol start="11">
+<li><strong>Variable domains</strong>
+$$
+q^k_{it}, s^k_{it}, b^k_{it}, \bar{m}^k_i, \bar{M}^k_i \geq 0; \quad y^k_{it}, p_{it}^k \in {0,1}
+$$</li>
+</ol>
 
       </div></div>
 
