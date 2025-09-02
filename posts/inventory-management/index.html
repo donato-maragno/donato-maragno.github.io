@@ -6,11 +6,14 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <meta name="description" content="
 In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.
 What is inventory management, and why does it matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
 " />
 <meta name="keywords" content="" />
+
 
 <title>
   
@@ -19,9 +22,12 @@ What is inventory management, and why does it matter? At its core, inventory man
 </title>
 
 
+
   <meta name="robots" content="noodp" />
 
+
 <link rel="canonical" href="/posts/inventory-management/" />
+
 
 
 
@@ -66,9 +72,7 @@ What is inventory management, and why does it matter? At its core, inventory man
   
   <link rel="stylesheet" href="/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
 
-
 <link rel="stylesheet" href="/terminal.css">
-
 
 
 
@@ -76,18 +80,26 @@ What is inventory management, and why does it matter? At its core, inventory man
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Inventory Management: The Art of Balancing Supply and Demand" />
+<meta name="twitter:description" content="
+
+In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.
+What is inventory management, and why does it matter?
+At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components.
+On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge." />
+<meta name="twitter:url" content="/posts/inventory-management/" />
 
   
     <meta name="twitter:site" content="" />
   
-    <meta name="twitter:creator" content="" />
+  <meta name="twitter:creator" content="" />
 
 
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Inventory Management: The Art of Balancing Supply and Demand">
+<meta property="og:title" content="Inventory Management: The Art of Balancing Supply and Demand" />
 <meta property="og:description" content="
 In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.
 What is inventory management, and why does it matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
@@ -95,10 +107,17 @@ What is inventory management, and why does it matter? At its core, inventory man
 <meta property="og:url" content="/posts/inventory-management/" />
 <meta property="og:site_name" content="Donato Maragno" />
 
-  <meta property="og:image" content="/preview.jpg">
 
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
+
+
+
+  
+
+<meta property="og:image" content="/preview_post.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="627" />
+
+
 
 
   <meta property="article:published_time" content="2025-08-21 00:00:00 &#43;0000 UTC" />
@@ -323,7 +342,7 @@ And don’t forget <strong>internal uncertainty</strong>, production lines that 
 <li><strong>Network flexibility</strong>: dual sourcing or dynamic reallocation between warehouses.
 Both of them aim at increasing robustness in the inventory management system.</li>
 </ul>
-<p>From a mathematical perspective, uncertainty is what turns a simple deterministic model into a rich stochastic or robust optimization problem, and I love it. Instead of asking, <em>“What’s the optimal order if demand next week is 100 units?”</em>, the real question should be, <em>“What’s the policy that works best across hundreds of possible futures?”</em>. But again, this is for another post. Now let´s go back to a easier deterministic scenario.</p>
+<p>From a mathematical perspective, uncertainty is what turns a simple deterministic model into a rich stochastic or robust optimization problem, and I love it. Instead of asking, <em>“What’s the optimal order if demand next week is 100 units?”</em>, the real question should be, <em>“What’s the policy that works best across hundreds of possible futures?”</em>. But again, this is for another post. Now let´s continue with the <em>easier</em> deterministic assumption.</p>
 <h1 id="an-optimal-policy-is-all-you-need">An <em>OPTIMAL</em> policy is all you need<a href="#an-optimal-policy-is-all-you-need" class="hanchor" ariaLabel="Anchor">#</a> </h1>
 <p>Yes, you don’t just need <em>a</em> policy; you need the <em>optimal</em> one. A policy is a rulebook for how inventory decisions are made: when to order, and how much. But among the many possible rules, some are clearly better than others in terms of cost and service. An <em>optimal</em> policy is the one that achieves the desired objectives (high availability, low cost) without wasting resources.</p>
 <p>Of course, the real world is full of uncertainty: demand fluctuates, lead times vary, and suppliers can fail. But before dealing with those messy realities, it’s crucial to first build intuition in a simpler setting, the <strong>deterministic case</strong>, where demand and lead times are perfectly known. This isn’t realistic, but it provides solid foundations: by understanding the “clean” case, we know what we’re aiming for before layering on uncertainty.</p>
@@ -868,8 +887,6 @@ All needed packages can be installed using the <code>pip install &lt;name packag
 </table>
 <p>Let´s take a look at the first item. The policy has a min of 3 and a max of 7. The initial stock is equal to 6 and the lead time is equal to 2 weeks (see table above). In the figure below, we can see the inventory level during the entire time horizon assuming a deterministic demand. Fantastic, isn´t it?</p>
 <p><img src="/images/inventory_flow.png" alt="inventory_flow.png"></p>
-<h2 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>The discussion and formulation presented in this post is well-known in the scientific literature and widely used in inventory management and lot-sizing problems. Similar modeling concepts can be found in any textbook on inventory theory or production planning (e.g., Nahmias, 2013; Silver, Pyke, &amp; Thomas, 2016)</p>
 
       </div></div>
 
@@ -882,6 +899,20 @@ All needed packages can be installed using the <code>pip install &lt;name packag
     
 
   
+  
+  <div class="post-share" style="margin-top:2em;">
+    <span>Share: </span>
+
+    
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=%2fposts%2finventory-management%2f"
+      target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+
+    &nbsp;|&nbsp;
+
+    
+    <a href="https://twitter.com/intent/tweet?url=%2fposts%2finventory-management%2f&text=Inventory%20Management%3a%20The%20Art%20of%20Balancing%20Supply%20and%20Demand"
+      target="_blank" rel="noopener noreferrer">🐦 X</a>
+  </div>
 </article>
 
   </div>
