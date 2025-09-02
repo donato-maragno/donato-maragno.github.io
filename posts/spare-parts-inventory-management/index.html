@@ -6,7 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
+<meta name="description" content="![[inventory.jpg]]
 In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
 What is Inventory Management, and Why Does it Matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
 " />
@@ -88,7 +88,7 @@ What is Inventory Management, and Why Does it Matter? At its core, inventory man
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Inventory Management: The Art of Balancing Supply and Demand">
-<meta property="og:description" content="
+<meta property="og:description" content="![[inventory.jpg]]
 In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study on spare parts inventory management, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.
 What is Inventory Management, and Why Does it Matter? At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components. On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.
 " />
@@ -203,7 +203,7 @@ What is Inventory Management, and Why Does it Matter? At its core, inventory man
   
 
   <div class="post-content"><div>
-        <p><img src="/images/inventory.jpg" alt="inventory.jpg"></p>
+        <p>![[inventory.jpg]]</p>
 <hr>
 <p>In this post, I explain what <strong>inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization</strong>. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a <strong>practical case study on spare parts inventory management</strong>, showing how optimization can be applied to determine ideal reorder points, order quantities, and service levels.</p>
 <hr>
@@ -345,7 +345,7 @@ Lead time is deterministic and critical:</li>
 This simple cycle ensures that replenishments are both systematic and predictable.</li>
 </ul>
 <p>Let´s look at a visual example for one single spare part.
-<img src="/images/inventory_policy.png" alt="inventory_policy.png">
+![[inventory_policy.png]]
 The figure above illustrates how an _(s, S) = (3, 7) _ policy unfolds over time for one part assuming a lead time of 2 weeks:</p>
 <ul>
 <li><strong>Stock trajectory (top plot)</strong>: The light blue line shows inventory over weeks. When stock dips below <em>s</em> (the dashed lower line), an order is triggered, and stock jumps back up to <em>S</em> (the dashed upper line) when the order arrives minus the orders fulfilled or backorders cumulated during the lead time.</li>
@@ -356,7 +356,7 @@ The figure above illustrates how an _(s, S) = (3, 7) _ policy unfolds over time 
 <h1 id="mathematical-model">Mathematical Model<a href="#mathematical-model" class="hanchor" ariaLabel="Anchor">#</a> </h1>
 <p>A bit of math and we are going to have a beautifully working policy. Don’t worry, it’s going to be easy to follow, and I’ll even show you how to code it. Pretty cool, right?!</p>
 <h4 id="sets--parameters">Sets &amp; Parameters<a href="#sets--parameters" class="hanchor" ariaLabel="Anchor">#</a> </h4>
-<p>We begin with the Sets and Parameters, the building blocks of the model: items, time horizon and step, future demand per item, unit purchase cost, ordering and handling costs, and lead time. (I’ll cover demand forecasting in a separate post.)</p>
+<p>We begin with the <em>sets and parameters</em>, the building blocks of the model: items, time horizon and time step, future demand per item, costs, and lead time. (I’ll cover demand forecasting in a separate post.)</p>
 <table>
   <thead>
       <tr>
@@ -404,7 +404,7 @@ The figure above illustrates how an _(s, S) = (3, 7) _ policy unfolds over time 
   </tbody>
 </table>
 <h4 id="decision-variables">Decision Variables<a href="#decision-variables" class="hanchor" ariaLabel="Anchor">#</a> </h4>
-<p>Then, we have to define the decision variables, the parts of the model that are not fixed but will be determined by the optimization.</p>
+<p>Then, we have to define the decision variables, the parts of the model that are not fixed but will be determined by the optimization. Remember, we are modelling an optimization model that will determine an <em>(s, S)</em> policy for each item. In the formulation, for readability reasons we use <code>(m, M)</code> instead of <code>(s, S)</code>.</p>
 <table>
   <thead>
       <tr>
@@ -458,101 +458,151 @@ $$
 \min \sum_{i \in \mathcal{I}} \sum_{t \in \mathcal{T}} (c^p_i q_{it} + c^o_i y_{it} + c^h_i s_{it})
 $$</p>
 <ul>
-<li>$c^p_i q_{it}$→ cost to buy items.</li>
-<li>$c^o_i y_{it}$ → cost to place an order.</li>
-<li>$c^h_i * s_{it}$ → cost to store inventory.</li>
+<li>first term → cost to buy items.</li>
+<li>second term → cost to place an order.</li>
+<li>third term → cost to store inventory.</li>
 </ul>
 <h3 id="constraints">Constraints<a href="#constraints" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <ol>
-<li><strong>Service level constraint</strong></li>
-</ol>
-<p>$$
-\sum_{t \in \mathcal{T}} p_{it} \le (1 - SL_i) , |\mathcal{T}|, \quad \forall i
+<li>
+<p><strong>Service level constraint</strong>
 $$
-This ensures that stockouts occur in at most a fraction of periods, guaranteeing the minimum service level for each item.</p>
-<p>$$
-b_{it} \le M , p_{it}, \quad p_{it} \le b_{it}, \quad \forall i, t
+\sum_{t \in \mathcal{T}} p_{it} \le (1 - SL_i) |\mathcal{T}|, \quad \forall i
 $$
-These inequalities define the binary stockout variable <code>p</code>: it is 1 whenever there is a backlog.</p>
-<ol start="2">
+This ensures that stockouts occur in at most a fraction of periods, guaranteeing the minimum service level for each item. An alternative to constraining the service level to be greater than a lower bound threshold, would be to penalize it in the objective function. However, it might be challenging to put a cost on stockouts, and in some cases (see the pharmaceutical industry) we would like the service level to be equal to 1.
+$$
+b_{it} \le Mp_{it}, \quad p_{it} \le b_{it}, \quad \forall i, t
+$$
+We can constraint the backlog or we can constraint the percentage of times we are in stockout. The latter is what we are modelling and it requires additional constraints and binary variables <code>p</code> that should are forced to be equal to 1 whenever there is a backlog.</p>
+</li>
 <li>
 <p><strong>Inventory balance constraint</strong>
-$$s_{it-1} + q_{it-l^k_i-1} + b_{it} = d_{it} + b^k_{it-1} + s_{it}, \quad \forall i, t$$
-This constraint ensures that the inventory at the end of each period correctly accounts for previous stock, arriving orders, demand, and any backlog.</p>
+$$
+s_{it-1} + q_{it-l_i-1} + b_{it} = d_{it} + b_{it-1} + s_{it}, \quad \forall i, t
+$$
+This constraint ensures that at each time step and for each item, the inventory at the end of each period correctly accounts for previous stock, arriving orders, demand, and any backlog.</p>
 </li>
 <li>
 <p><strong>Logical order constraint</strong>
 $$
 q_{it} \leq M y_{it}, \quad \forall i, t
 $$
-This constraint links continuous order quantities <code>q</code> to binary order decisions <code>y</code>. Basically, it ensures that a purchase order (and its associated ordering cost) is recorded <strong>only when you actually place it</strong>.</p>
+This constraint links continuous order quantities <code>q</code> to binary order decisions <code>y</code>. It ensures that if the order quantity <code>q</code> is greater than zero, a purchase order must be placed (<code>y = 1</code>). In other words, whenever we want to order, we must account for the fixed cost of placing that order, which is included in the objective function.</p>
 </li>
 <li>
 <p><strong>At most one order per lead time window</strong>
-$$
-\sum_{t&rsquo;=t}^{t+l_i} y_{it&rsquo;} \leq 1
-$$</p>
+$$\sum_{t&rsquo;=t}^{t+l_i} y_{it&rsquo;} \leq 1, \quad \forall i$$
+Once an order is placed for an item, no additional orders can be made until the supplier delivers it. This constraint may be unnecessary if the supplier allows continuous ordering. In that case, we must clarify the lead time. For example, the supplier might deliver all orders placed at different time steps together, provided certain conditions are met. Let´s keep it simple for now.</p>
 </li>
 <li>
 <p><strong>Minimum inventory level enforcement</strong>
 $$
-s_{it}^k - b^k_{it} - \bar{m}^k_i \leq M \left( 1 - y_{it}^k \right)
+s_{it} - b_{it} - \bar{m}<em>{i} \leq M \left( 1 - y</em>{it} \right), \quad \forall i, t
 $$</p>
 </li>
 </ol>
 <p>$$
-\bar{m}^k_i + b^k_{it} - s_{it}^k + 1 \leq M y_{it}^k + M\sum_{t&rsquo;=t-l^k_i}^{t-1} y^k_{it&rsquo;}
+\bar{m}<em>{i} + b</em>{it} - s_{it} + 1 \leq M y_{it} + M \sum_{t&rsquo;=t-l_i}^{t-1} y_{it&rsquo;}
 $$
-Ensures a purchase order is issued <strong>if and only if</strong> the stock at the end of the period is at or below the minimum level.</p>
+These two constraints ensure that a purchase order can be issued <strong>if and only if</strong> the stock at the end of the period is at or below the minimum level. What these constraints are doing is the following:
+$$
+s_{it} - b_{it} - \bar{m}<em>{i} \leq 0 \Leftrightarrow \sum</em>{t&rsquo;=t-l_i}^t y_{it} = 1
+$$
+that is, an order can be issued if and only if the stock on hand at the end of the
+period, after discounting the backlog, is at or below the min level.</p>
 <ol start="6">
 <li>
-<p><strong>Minimum cycle service level</strong>
+<p><strong>Maximum inventory level constraints</strong>
 $$
-\bar{m}_i^k \geq \mu^k_i
+q_{it} \leq \bar{m}<em>{i} - s</em>{it} + b_{it} + M \left( 1 - y_{it} \right)
 $$
-Guarantees a minimum service level for each item-site.</p>
+$$
+q_{it} \geq \bar{m}<em>{i} - s</em>{it} + b_{it} - M \left( 1 - y_{it} \right)
+$$
+These two constraints ensure that if an order is placed, the quantity ordered is sufficient to raise the stock <strong>up to the maximum level</strong>, assuming no demand occurs during the lead time. These two constraints, together with the logical order constraint, are used to linearize the following quadratic constraints, which impose that, if an order is issued, the replenishing quantity is <em>up</em>
+<em>to max</em>:
+$$
+q_{it} = \left[ \bar{m}<em>{i} - \left( s</em>{it-1} + b_{it} - b_{it-1} -
+d_{it} + q_{it-l_i-1} \right) + b_{it} \right]y_{it} = \left( \bar{m}<em>{i} - s</em>{it} + b_{it}\right)y_{it}
+$$
+where the last equality is due to the balance constraint.</p>
 </li>
 <li>
-<p><strong>Maximum inventory level constraints</strong></p>
-</li>
-</ol>
-<p>$$
-q_{it}^k \leq \bar{M}^k_i - s_{it}^k + b^k_{it} + M \left( 1 - y^k_{it} \right)
-$$</p>
-<p>$$
-q_{it}^k \geq \bar{M}^k_i - s_{it}^k + b^k_{it} - M \left( 1 - y_{it}^k \right)
-$$</p>
-<p>Ensures that if an order is placed, the quantity brings stock <strong>up to the max level</strong>.</p>
-<ol start="8">
-<li>
-<p><strong>Service level binary variables</strong>
+<p><strong>Mutual exclusivity of stock and backlog</strong><br>
 $$
-b^k_{it} \leq M p^k_{it} \quad\text{and}\quad p^k_{it} \leq b^k_{it}
+s_{it} \leq M , \delta_{it}
 $$
-Forces binary variables <code>p</code> to 1 when there is backlog.</p>
+$$
+b_{it} \leq M \left(1 - \delta_{it}\right)
+$$
+These constraints ensure that stock on hand and backlog cannot be positive at the same time. If there is stock available at the end of a period, backlog must be zero, and conversely, if there is backlog, the stock must be zero. This linearization replaces the quadratic constraint<br>
+$$
+s_{it} , b_{it} = 0
+$$
+by introducing the auxiliary binary variable $\delta^k_{it}$.</p>
 </li>
 <li>
-<p><strong>Order issuance condition</strong></p>
+<p><strong>Variable domains</strong>
+$$
+q_{it}, s_{it}, b_{it}, \bar{m}<em>{i}, \bar{m}</em>{i} \geq 0; \quad y_{it}, p_{it} \in {0,1}
+$$
+These constraints ensure that each variable remains within its specified domain: binary or positive continuous.</p>
 </li>
 </ol>
-<p>$$
-s^k_{it} - b^k_{it} - \bar{m}^k_i \leq 0 \Leftrightarrow \sum_{t&rsquo;=t-l_i^k}^t y^k_{it} = 1
-$$</p>
-<p>A PO can be issued <strong>only if</strong> stock on hand minus backlog is at or below the minimum level.</p>
-<ol start="10">
-<li><strong>“Up to max” order quantity</strong></li>
-</ol>
-<p>$$
-q_{it}^k = (\bar{M}^k_i - s^k_{it} + b^k_{it}) y_{it}^k
-$$</p>
-<p>Linearization of the quadratic constraint to enforce replenishment <strong>up to max</strong>.</p>
-<ol start="11">
-<li><strong>Variable domains</strong>
-$$
-q^k_{it}, s^k_{it}, b^k_{it}, \bar{m}^k_i, \bar{M}^k_i \geq 0; \quad y^k_{it}, p_{it}^k \in {0,1}
-$$</li>
-</ol>
-
+<p>And that’s it! We’ve just written a deterministic, multi-period, multi-item inventory optimization model that, once solved, gives us an optimal <em>(s, S)</em> policy. It might look a bit intimidating if this is your first time seeing a mathematical optimization model, but trust me, the more you read and experiment with these models, the more you’ll start to appreciate the beauty and elegance behind every single equation. The amazing part is that we can model almost anything you can think of. Sometimes, when a function is difficult to define, we can even bring in machine learning to help us learn it, fun fact, that’s actually the topic of my PhD thesis!</p>
+<p>Okay, back to our inventory problem. There are still a few things we need to tackle, such as uncertainty which deserves its own post. But before we get there, let’s make everything we’ve written down concrete and see it in action by coding the model with some realistic data. Once we do that, we can run it, analyze the results, and really start to understand how the optimal <em>(s, S)</em> policy behaves in practice.</p>
+<h1 id="code">Code<a href="#code" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>The following code includes:</p>
+<ul>
+<li>synthetic data generation for 10 items and 12 weeks (one quarter) with a weekly time step.</li>
+<li>model construction using PulP, an open source linear and mixed integer programming modeler.</li>
+<li>model optimization using PulP default solver CBC.</li>
+<li>data export and plotting.
+You can try it out directly on google Colab. [add installations needed]</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># The notebook includes:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - synthetic data generation for 10 items and 12 weeks (one quarter) with a weekly time step.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - model construction using PulP, an open source linear and mixed integer programming modeler.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - model optimization using PulP default solver CBC.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># - data export and plotting</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1"># Create baseline demands per item between 5 and 30 units/week</span>
+</span></span><span class="line"><span class="cl"><span class="n">base_demand</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_items</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add item-specific seasonality and week-of-horizon pattern</span>
+</span></span><span class="line"><span class="cl"><span class="n">item_seas_amp</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_items</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">week_pattern</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Construct demand matrix d[i,t]</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">periods</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1"># item-level seasonal multiplier (6-week wave) + week-of-horizon mod + small gaussian noise</span>
+</span></span><span class="line"><span class="cl">		<span class="n">seasonal</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">item_seas_amp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">6.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">base_demand</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">		<span class="n">val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">base_demand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">seasonal</span> <span class="o">*</span> <span class="n">week_pattern</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">noise</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Unit purchase cost c^p_i, ordering fixed cost c^o_i, holding cost c^h_i</span>
+</span></span><span class="line"><span class="cl"><span class="n">c_p</span> <span class="o">=</span> <span class="p">{</span><span class="n">it</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">c_o</span> <span class="o">=</span> <span class="p">{</span><span class="n">it</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">20</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">c_h</span> <span class="o">=</span> <span class="p">{</span><span class="n">it</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n_items</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&#34;item_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&#34;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_items</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span> <span class="o">=</span> <span class="mi">12</span>
+</span></span><span class="line"><span class="cl"><span class="n">periods</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># fix seed for reproducibility</span>
+</span></span><span class="line"><span class="cl"><span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"></code></pre></div>
       </div></div>
 
   
