@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Donato Maragno</title>
-    <link>https://donato-maragno.github.io/posts/</link>
-    <description>Recent content in Posts on Donato Maragno</description>
+    <title>Math on Donato Maragno</title>
+    <link>https://donato-maragno.github.io/tags/math/</link>
+    <description>Recent content in Math on Donato Maragno</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 03 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://donato-maragno.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Part 1 - Theory] Inventory Management: The Art of Balancing Supply and Demand</title>
-      <link>https://donato-maragno.github.io/posts/inventory-management---part-1/</link>
-      <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://donato-maragno.github.io/posts/inventory-management---part-1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://donato-maragno.github.io/images/inventory.jpg&#34; alt=&#34;inventory.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Inventory management is at the heart of operations, yet it’s one of the most challenging aspects for organizations of all sizes. In this post, we explore what inventory management is, why it matters, and the key principles that guide effective decisions. I’ll introduce the most common policies, like (s, Q), (s, S), and periodic review, and explain how organizations balance costs, service levels, and risk. This foundational knowledge sets the stage for understanding how mathematics can help optimize inventory decisions in real-world settings.&lt;/p&gt;</description>
-    </item>
+    <atom:link href="https://donato-maragno.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Part 2 - Model] Inventory Management: The Art of Balancing Supply and Demand</title>
       <link>https://donato-maragno.github.io/posts/inventory-management---part-2/</link>

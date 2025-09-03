@@ -191,20 +191,18 @@
     
       <article class="post on-list">
         <h1 class="post-title">
-          <a href="https://donato-maragno.github.io/posts/inventory-management/">Inventory Management: The Art of Balancing Supply and Demand</a>
+          <a href="https://donato-maragno.github.io/posts/inventory-management---part-2/">[Part 2 - Model] Inventory Management: The Art of Balancing Supply and Demand</a>
         </h1>
-        <div class="post-meta"><time class="post-date">2025-08-21</time></div>
+        <div class="post-meta"><time class="post-date">2025-09-03</time></div>
 
         
           <span class="post-tags">
-            
-            #<a href="https://donato-maragno.github.io/tags/application/">application</a>&nbsp;
             
             #<a href="https://donato-maragno.github.io/tags/optimization/">optimization</a>&nbsp;
             
             #<a href="https://donato-maragno.github.io/tags/inventory/">inventory</a>&nbsp;
             
-            #<a href="https://donato-maragno.github.io/tags/spare-parts/">spare-parts</a>&nbsp;
+            #<a href="https://donato-maragno.github.io/tags/math/">math</a>&nbsp;
             
           </span>
         
@@ -214,18 +212,51 @@
 
         <div class="post-content">
           
-            <p><img src="/images/inventory.jpg" alt="inventory.jpg"></p>
-<blockquote>
-<p>In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.</p></blockquote>
-<h1 id="what-is-inventory-management-and-why-does-it-matter">What is inventory management, and why does it matter?</h1>
-<p>At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components.
-On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.</p>
+            <blockquote>
+<p>In the <a href="/posts/inventory-management-part-1/">previous post</a>, we covered the fundamentals of inventory management, key policies, and how organizations think about costs and service levels. Now, we dive into the <strong>mathematical side</strong>: how to formulate a multi-item, multi-period inventory problem as a <strong>mixed-integer optimization model</strong>. This post will walk through the sets, parameters, decision variables, objective function, and constraints that define an optimal <em>(s, S)</em> policy.</p></blockquote>
+<h1 id="an-optimal-policy-is-all-you-need">An <em>OPTIMAL</em> policy is all you need</h1>
+<p>Yes, you don’t just need <em>a</em> policy; you need the <em>optimal</em> one. A policy is a rulebook for how inventory decisions are made: when to order, and how much. But among the many possible rules, some are clearly better than others in terms of cost and service. An <em>optimal</em> policy is the one that achieves the desired objectives (high availability, low cost) without wasting resources.</p>
           
         </div>
 
         
           <div>
-            <a class="read-more button inline" href="/posts/inventory-management/">[Read more]</a>
+            <a class="read-more button inline" href="/posts/inventory-management---part-2/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h1 class="post-title">
+          <a href="https://donato-maragno.github.io/posts/inventory-management---part-3/">[Part 3 - Code] Inventory Management: The Art of Balancing Supply and Demand</a>
+        </h1>
+        <div class="post-meta"><time class="post-date">2025-09-03</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://donato-maragno.github.io/tags/optimization/">optimization</a>&nbsp;
+            
+            #<a href="https://donato-maragno.github.io/tags/inventory/">inventory</a>&nbsp;
+            
+            #<a href="https://donato-maragno.github.io/tags/math/">math</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+
+        <div class="post-content">
+          
+            <blockquote>
+<p>In the <a href="/posts/inventory-management-part-2/">previous post</a>, we built a complete mathematical model to determine the optimal <em>(s, S)</em> policy for multiple items over a planning horizon. Now it’s time to put theory into practice. In this post, we generate realistic synthetic data, formulate the model in <strong>Python using PulP</strong>, solve it with an open-source solver, and visualize the results. By the end, you’ll see how the optimal reorder points and order-up-to levels unfold week by week.</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/inventory-management---part-3/">[Read more]</a>
           </div>
         
       </article>
