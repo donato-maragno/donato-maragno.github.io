@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Donato Maragno</title>
-    <link>/tags/</link>
+    <link>https://donato-maragno.github.io/tags/</link>
     <description>Recent content in Tags on Donato Maragno</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://donato-maragno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Application</title>
-      <link>/tags/application/</link>
+      <link>https://donato-maragno.github.io/tags/application/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/application/</guid>
+      <guid>https://donato-maragno.github.io/tags/application/</guid>
       <description></description>
     </item>
     <item>
       <title>Inventory</title>
-      <link>/tags/inventory/</link>
+      <link>https://donato-maragno.github.io/tags/inventory/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/inventory/</guid>
+      <guid>https://donato-maragno.github.io/tags/inventory/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimization</title>
-      <link>/tags/optimization/</link>
+      <link>https://donato-maragno.github.io/tags/optimization/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/optimization/</guid>
+      <guid>https://donato-maragno.github.io/tags/optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Spare-Parts</title>
-      <link>/tags/spare-parts/</link>
+      <link>https://donato-maragno.github.io/tags/spare-parts/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/spare-parts/</guid>
+      <guid>https://donato-maragno.github.io/tags/spare-parts/</guid>
       <description></description>
     </item>
   </channel>

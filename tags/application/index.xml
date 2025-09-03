@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Application on Donato Maragno</title>
-    <link>/tags/application/</link>
+    <link>https://donato-maragno.github.io/tags/application/</link>
     <description>Recent content in Application on Donato Maragno</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://donato-maragno.github.io/tags/application/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inventory Management: The Art of Balancing Supply and Demand</title>
-      <link>/posts/inventory-management/</link>
+      <link>https://donato-maragno.github.io/posts/inventory-management/</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/posts/inventory-management/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/images/inventory.jpg&#34; alt=&#34;inventory.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h1 id=&#34;what-is-inventory-management-and-why-does-it-matter&#34;&gt;What is inventory management, and why does it matter?&lt;/h1&gt;&#xA;&lt;p&gt;At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components.&#xA;On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.&lt;/p&gt;</description>
+      <guid>https://donato-maragno.github.io/posts/inventory-management/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://donato-maragno.github.io/images/inventory.jpg&#34; alt=&#34;inventory.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;In this post, I explain what inventory management is, why it matters, and how organizations can systematically improve it using mathematical optimization. First, I discuss inventory management from a generic perspective, highlighting the key principles, policies, and challenges. Then, I dive into a practical case study inventory management, showing how optimization can be applied to determine ideal reordering policy.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h1 id=&#34;what-is-inventory-management-and-why-does-it-matter&#34;&gt;What is inventory management, and why does it matter?&lt;/h1&gt;&#xA;&lt;p&gt;At its core, inventory management is the art, and often the headache, of ensuring that the right product is available in the right place, at the right time, and at the right cost. Sounds simple, but in practice it’s one of the most complex problems in operations, especially when the number of products is large, the supply chain has multiple levels, and the costs structure has several components.&#xA;On the one hand, organizations want to keep inventories lean: holding too much stock ties up capital, increases storage costs, and risks obsolescence. On the other hand, running too lean can mean lost sales, production delays, and unsatisfied customers. The sweet spot lies somewhere in between, and finding it consistently is the challenge.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
