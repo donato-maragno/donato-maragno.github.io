@@ -216,7 +216,7 @@ An OPTIMAL policy is all you need Yes, you don’t just need a policy; you need 
 
   <div class="post-content"><div>
         <blockquote>
-<p>In the <a href="/posts/inventory-management-part-1/">previous post</a>, we covered the fundamentals of inventory management, key policies, and how organizations think about costs and service levels. Now, we dive into the <strong>mathematical side</strong>: how to formulate a multi-item, multi-period inventory problem as a <strong>mixed-integer optimization model</strong>. This post will walk through the sets, parameters, decision variables, objective function, and constraints that define an optimal <em>(s, S)</em> policy.</p></blockquote>
+<p>In the <a href="/posts/inventory-management---part-1/">previous post</a>, we covered the fundamentals of inventory management, key policies, and how organizations think about costs and service levels. Now, we dive into the <strong>mathematical side</strong>: how to formulate a multi-item, multi-period inventory problem as a <strong>mixed-integer optimization model</strong>. This post will walk through the sets, parameters, decision variables, objective function, and constraints that define an optimal <em>(s, S)</em> policy.</p></blockquote>
 <h1 id="an-optimal-policy-is-all-you-need">An <em>OPTIMAL</em> policy is all you need<a href="#an-optimal-policy-is-all-you-need" class="hanchor" ariaLabel="Anchor">#</a> </h1>
 <p>Yes, you don’t just need <em>a</em> policy; you need the <em>optimal</em> one. A policy is a rulebook for how inventory decisions are made: when to order, and how much. But among the many possible rules, some are clearly better than others in terms of cost and service. An <em>optimal</em> policy is the one that achieves the desired objectives (high availability, low cost) without wasting resources.</p>
 <p>Of course, the real world is full of uncertainty: demand fluctuates, lead times vary, and suppliers can fail. But before dealing with those messy realities, it’s crucial to first build intuition in a simpler setting, the <strong>deterministic case</strong>, where demand and lead times are perfectly known. This isn’t realistic, but it provides solid foundations: by understanding the “clean” case, we know what we’re aiming for before layering on uncertainty.</p>
@@ -450,7 +450,7 @@ These constraints ensure that each variable remains within its specified domain:
 <blockquote>
 <p>⚠️ <strong>Note:</strong> The model we just discussed can be decomposed by item. This means, we can solve the problem separately for each item, and the total cost will simply be the sum of the individual item objective values.<br>
 However, this decomposition is no longer possible if there is a global budget constraint that limits total spend across all items.</p></blockquote>
-<p>In the <a href="/posts/inventory-management-part-3/">next post</a>, we will see how to code this model in python using an open source modelling package and solver.</p>
+<p>In the <a href="/posts/inventory-management---part-3/">next post</a>, we will see how to code this model in python using an open source modelling package and solver.</p>
 
       </div></div>
 
