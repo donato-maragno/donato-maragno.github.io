@@ -9,6 +9,13 @@
     <lastBuildDate>Wed, 03 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://donato-maragno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Code</title>
+      <link>https://donato-maragno.github.io/tags/code/</link>
+      <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://donato-maragno.github.io/tags/code/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Inventory</title>
       <link>https://donato-maragno.github.io/tags/inventory/</link>
       <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
@@ -27,6 +34,13 @@
       <link>https://donato-maragno.github.io/tags/optimization/</link>
       <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://donato-maragno.github.io/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://donato-maragno.github.io/tags/python/</link>
+      <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://donato-maragno.github.io/tags/python/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Donato Maragno</title>
+    <link>https://donato-maragno.github.io/tags/code/</link>
+    <description>Recent content in Code on Donato Maragno</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 03 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://donato-maragno.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Part 3 - Code] Inventory Management: The Art of Balancing Supply and Demand</title>
+      <link>https://donato-maragno.github.io/posts/inventory-management---part-3/</link>
+      <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://donato-maragno.github.io/posts/inventory-management---part-3/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;In the &lt;a href=&#34;https://donato-maragno.github.io/posts/inventory-management---part-2/&#34;&gt;previous post&lt;/a&gt;, we built a complete mathematical model to determine the optimal &lt;em&gt;(s, S)&lt;/em&gt; policy for multiple items over a planning horizon. Now it’s time to put theory into practice. In this post, we generate realistic synthetic data, formulate the model in &lt;strong&gt;Python using PulP&lt;/strong&gt;, solve it with an open-source solver, and visualize the results. By the end, you’ll see how the optimal reorder points and order-up-to levels unfold week by week.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
