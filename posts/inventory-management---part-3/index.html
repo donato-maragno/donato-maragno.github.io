@@ -221,7 +221,7 @@ In the previous post, we built a complete mathematical model to determine the op
 <li>model construction using PulP, an open source linear and mixed integer programming modeler.</li>
 <li>model optimization using PulP default solver CBC.</li>
 <li>data export and plotting.
-I uploaded it on <a href="https://colab.research.google.com/">Google Colab</a>. You can easily try it there.</li>
+I uploaded it on <a href="https://colab.research.google.com/drive/1gpur7bqX2K1DsSBbSmxdCLBsilyYANkt?usp=sharing">Google Colab</a>. You can easily try it there.</li>
 </ul>
 <p>The first thing we do is to import the packages needed to run our code. We will use the package <strong><a href="https://coin-or.github.io/pulp/">PulP</a></strong> to formulate the model. Then, we define the sets of time steps, 12 weeks, and the set of items. We fix the seed for reproducibility, so that we all get the same results.
 All needed packages can be installed using the <code>pip install &lt;name package&gt;</code>.</p>
@@ -256,7 +256,7 @@ All needed packages can be installed using the <code>pip install &lt;name packag
 </span></span><span class="line"><span class="cl">        <span class="n">val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">base_demand</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">seasonal</span> <span class="o">*</span> <span class="n">week_pattern</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">noise</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">it</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 </span></span></code></pre></div><p>The demand will look like this for the first three items:
-![[demand_3_items_blue.png]]</p>
+<img src="/images/demand_3_items_blue.png" alt="demand_3_items_blue.png"></p>
 <p>Okay, we have the sets, we have the demand, now we give a value to the rest of the parameters.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">c_p</span> <span class="o">=</span> <span class="p">{</span><span class="n">it</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">}</span>  <span class="c1"># purchase cost</span>
 </span></span><span class="line"><span class="cl">
@@ -573,7 +573,7 @@ All needed packages can be installed using the <code>pip install &lt;name packag
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></span></code></pre></div><p>The policy has a min of 3 and a max of 7. The initial stock is equal to 6 and the lead time is equal to 2 weeks (see table above). In the figure below, we can see the inventory level during the entire time horizon assuming a deterministic demand. Fantastic, isn´t it?</p>
-<p>![[inventory_flow.png]]</p>
+<p><img src="/images/inventory_flow.png" alt="inventory_flow.png"></p>
 <p>Next, we will see how to deal with uncertainty and how to scale this problem to thousands of items.</p>
 
       </div></div>
