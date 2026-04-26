@@ -1,0 +1,24 @@
+--- TURNING DATA ---
+"lg:col-span-7 mb-20",children:[f.jsx("span",{className:"mono text-[10px] tracking-[0.5em] text-orange-500 uppercase mb-8 block font-bold",children:"Dr. Donato Maragno"}),f.jsxs("h1",{className:"text-4xl md:text-6xl mono font-bold tracking-widest leading-tight text-white mb-12 uppercase",children:["Turning Data ",f.jsx("br",{}),f.jsx("span",{className:"italic serif text-gray-500",children:"Into Decisions."})]})]}),f.jsx("div",{className:"lg:col-span-5 mb-20 flex items-center justify-center",children:f.jsxs("div",{className:"relative w-full aspect-[3/4] rounded-md overflow-hidden border border-[#ea580c]/30 group",children:[f.jsx("div",{className:"absolute inset-0 bg-orange-900/20 mix-blend-ov
+
+--- CONTACT BUTTONS ---
+FOUND CONTACT TO:
+},d.path))}),f.jsxs("div",{className:"flex items-center space-x-4 lg:space-x-8",children:[f.jsx(_e,{to:"/contact",className:"hidden sm:inline-block px-6 py-2 rounded-sm border border-white/20 text-[10px] uppercase
+FOUND CONTACT TO:
+e===d.path?"text-orange-500":"text-gray-400 hover:text-white"}`,children:d.name},d.path)),f.jsx(_e,{to:"/contact",className:"mt-8 px-10 py-4 rounded-sm bg-orange-600 text-white text-[12px] uppercase tracking-[0.3e
+FOUND CONTACT TO:
+s font-bold uppercase tracking-widest",children:g[x+1].title})]}),f.jsx(wc,{size:18})]}):f.jsxs(_e,{to:"/contact",className:"flex-1 flex items-center justify-center space-x-3 px-6 py-5 rounded-sm bg-white text-bla
+FOUND CONTACT TO:
+ed optimization solutions can transform your business processes and decision systems."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center space-x-4 bg-orange-600 text-white px-12 py-5 rounded-sm text-[
+FOUND CONTACT TO:
+to calibrated inventory decisions. The result is a system you can automate and trust."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center px-8 py-4 rounded-sm bg-amber-600 text-white font-bold text-lg 
+FOUND CONTACT TO:
+to calibrated inventory decisions. The result is a system you can automate and trust."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center px-8 py-4 rounded-sm bg-amber-600 text-white font-bold text-lg 
+FOUND CONTACT TO:
+he goal is a feasible, optimized plan that your production team can actually execute."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center px-8 py-4 rounded-sm bg-pink-600 text-white font-bold text-lg h
+FOUND CONTACT TO:
+o solvable models. This turns abstract strategy into concrete, quantitative roadmaps."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center space-x-2 bg-amber-600 hover:bg-amber-500 text-white px-8 py-4 
+FOUND CONTACT TO:
+lication of advanced optimization techniques to solve complex operational challenges."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center space-x-3 bg-orange-600 text-white px-10 py-5 rounded-sm text-s
+FOUND CONTACT TO:
+h to schedule a demo and discuss how Orbit can optimize your supply chain operations."}),f.jsxs(_e,{to:"/contact",className:"inline-flex items-center space-x-4 bg-orange-600 text-white px-10 py-5 rounded-sm text-s
