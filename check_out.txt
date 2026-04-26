@@ -1,4 +1,0 @@
---- FOOTER ITEMS ---
-Found 'Privacy Policy' at: -1
---- STAGE ITEMS ---
-className:"stage-item flex-shrink-0 w-[85vw] md:w-[75vw] lg:w-[65vw] h-[65vh] md:h-[75vh] bg-[#1c1410] rounded-sm md:rounded-md overflow-hidden cursor-pointer relative group/card border border-[#ea580
